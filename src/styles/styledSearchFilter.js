@@ -45,6 +45,28 @@ const StyledSearchFilter = styled.section`
       gap: 30px;
       font-weight: 100px;
       color: ${({ theme }) => theme.text};
+      div {
+        align-items: flex-start;
+        gap: 10px 0;
+        position: absolute;
+        transform: translate(-30px, 105px);
+        text-transform: capitalize;
+        display: none;
+        @media (min-width: 600px) {
+          transform: translate(-30px, 125px);
+        }
+        &.active {
+          ${FlexBox({ direction: "column", justify: "space-between" })};
+        }
+        span {
+          &:first-of-type {
+            padding-top: 10px;
+          }
+          &:last-of-type {
+            padding-bottom: 10px;
+          }
+        }
+      }
     }
   }
 `;

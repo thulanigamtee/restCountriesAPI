@@ -1,27 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import StyledCountries from "../styles/styledCountries";
 import { Link } from "react-router-dom";
+import CountriesContext from "./Context";
 
 const Countries = () => {
-  const url = "https://restcountries.com/v3.1/all";
-  const [countries, setCountries] = useState([]);
-  //const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setCountries(data);
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, []);
-
+  const { data, index } = useContext(CountriesContext);
   return (
     <StyledCountries>
-      {countries.map(({ name, capital, population, region, flags }) => {
+      {data[index].map(({ name, capital, population, region, flags }) => {
         return (
           <section key={name.common}>
             <Link to="/details">
