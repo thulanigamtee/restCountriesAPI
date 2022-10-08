@@ -32,7 +32,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://restcountriesapisite.netlify.app/)
+- [Live Site](https://restcountriesapisite.netlify.app/)
 
 ## My process
 
