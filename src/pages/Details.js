@@ -111,14 +111,6 @@ const Details = () => {
                         <p>no border countries</p>
                       )}
                     </p>
-                    {/*<p>
-                      <span>border Countries: </span>
-                      <p>
-                        {borders.map((border) => {
-                          return <p>{border}</p>;
-                        })}
-                      </p>
-                      </p>*/}
                   </div>
                 </section>
               </StyledDetails>
