@@ -22,7 +22,7 @@ const App = () => {
         <Header handleThemeChange={handleThemeChange} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/details" element={<Details />} />
+          <Route path="/details/:name" element={<Details />} />
         </Routes>
       </CountriesProvider>
     </ThemeProvider>

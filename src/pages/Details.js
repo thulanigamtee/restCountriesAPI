@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import StyledDetails from "../styles/styledDetails";
+import { BackButton } from "../styles/styledDetails";
+import { BsArrowLeft } from "react-icons/bs";
 
 const Details = () => {
-  const url = `https://restcountries.com/v3.1/name/{name}`;
+  const { name } = useParams();
+  //const url = `https://restcountries.com/v3.1/name/${name}`;
+  const url = `https://restcountries.com/v2/name/${name}?fullText=true`;
   const [country, setCountry] = useState([]);
   useEffect(() => {
     fetch(url)
@@ -14,8 +19,115 @@ const Details = () => {
       .catch((err) => {
         console.log(err.message);
       });
-  }, []);
-  return <div>Details</div>;
+  }, [url]);
+  return (
+    <>
+      {country.map(
+        ({
+          name,
+          nativeName,
+          capital,
+          population,
+          region,
+          subregion,
+          flags,
+          currencies,
+          languages,
+          topLevelDomain,
+          borders,
+        }) => {
+          const returnLanguages = () => {
+            let lang = [];
+            for (let i = 0; i < languages.length; i++) {
+              lang[i] = languages[i].name;
+            }
+            return lang.join(", ");
+          };
+
+          return (
+            <>
+              <BackButton>
+                <BsArrowLeft />
+                <p>back</p>
+              </BackButton>
+              <StyledDetails key={name}>
+                <section>
+                  <div>
+                    <img src={flags.png} alt={name} />
+                  </div>
+                </section>
+                <section>
+                  <div>
+                    <h1>{name}</h1>
+                  </div>
+                  <div>
+                    <section>
+                      <p>
+                        <span>native name: </span>
+                        {nativeName}
+                      </p>
+                      <p>
+                        <span>population: </span>
+                        {population.toLocaleString()}
+                      </p>
+                      <p>
+                        <span>region: </span>
+                        {region}
+                      </p>
+                      <p>
+                        <span>sub region: </span>
+                        {subregion}
+                      </p>
+                      <p>
+                        <span>capital: </span>
+                        {capital}
+                      </p>
+                    </section>
+                    <section>
+                      <p>
+                        <span>top level domain: </span>
+                        {topLevelDomain}
+                      </p>
+                      <p>
+                        <span>currencies: </span>
+                        {currencies[0].name}
+                      </p>
+                      <p>
+                        <span>languages: </span>
+                        {returnLanguages()}
+                      </p>
+                    </section>
+                  </div>
+                  <div>
+                    <p>
+                      <span>border Countries: </span>
+                      {borders ? (
+                        <p>
+                          {borders.map((border) => {
+                            return <p>{border}</p>;
+                          })}
+                        </p>
+                      ) : (
+                        <p>no border countries</p>
+                      )}
+                    </p>
+                    {/*<p>
+                      <span>border Countries: </span>
+                      <p>
+                        {borders.map((border) => {
+                          return <p>{border}</p>;
+                        })}
+                      </p>
+                      </p>*/}
+                  </div>
+                </section>
+              </StyledDetails>
+            </>
+          );
+        }
+      )}
+    </>
+  );
 };
 
 export default Details;

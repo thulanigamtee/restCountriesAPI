@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from "react";
-import StyledSearchFilter from "../styles/styledSearchFilter";
 
 const CountriesContext = createContext();
 
@@ -14,7 +13,6 @@ export const CountriesProvider = ({ children }) => {
   const [index, setIndex] = useState(0);
 
   const data = [countries, search, filtered];
-
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())

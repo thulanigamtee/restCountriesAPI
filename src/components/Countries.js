@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import StyledCountries from "../styles/styledCountries";
 import { Link } from "react-router-dom";
 import CountriesContext from "./Context";
@@ -10,7 +10,7 @@ const Countries = () => {
       {data[index].map(({ name, capital, population, region, flags }) => {
         return (
           <section key={name.common}>
-            <Link to="/details">
+            <Link to={`details/${name.common}`}>
               <img src={flags.png} alt={name.common} />
             </Link>
             <div>
