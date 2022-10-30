@@ -9,12 +9,12 @@ const Countries = () => {
     <StyledCountries>
       {data[index].map(({ name, capital, population, region, flags }) => {
         return (
-          <section key={name.common}>
-            <Link to={`details/${name.common}`}>
-              <img src={flags.png} alt={name.common} />
-            </Link>
+          <section key={name}>
+            <img src={flags.png} alt={name} />
             <div>
-              <p>{name.common}</p>
+              <Link to={`details/${name}`}>
+                <p>{name}</p>
+              </Link>
               <p>
                 population: <span>{population.toLocaleString()}</span>
               </p>
@@ -22,7 +22,8 @@ const Countries = () => {
                 region: <span>{region}</span>
               </p>
               <p>
-                capital: <span>{capital} </span>
+                capital:
+                <span> {capital}</span>
               </p>
             </div>
           </section>

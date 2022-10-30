@@ -3,7 +3,8 @@ import { createContext, useState, useEffect } from "react";
 const CountriesContext = createContext();
 
 export const CountriesProvider = ({ children }) => {
-  const url = "https://restcountries.com/v3.1/all";
+  //const url = "https://restcountries.com/v3.1/all";
+  const url = "https://restcountries.com/v2/all";
   const [countries, setCountries] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [region, setRegion] = useState([]);
@@ -28,7 +29,7 @@ export const CountriesProvider = ({ children }) => {
   useEffect(() => {
     setSearch(
       countries.filter((country) =>
-        country.name.common.toLowerCase().includes(name.toLowerCase())
+        country.name.toLowerCase().includes(name.toLowerCase())
       )
     );
   }, [name]);

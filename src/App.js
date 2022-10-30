@@ -9,10 +9,10 @@ import { light, dark } from "./styles/theme";
 import { Route, Routes } from "react-router";
 
 const App = () => {
-  const [activeTheme, setActiveTheme] = useState(light);
+  const [activeTheme, setActiveTheme] = useState(dark);
 
   const handleThemeChange = () => {
-    activeTheme === light ? setActiveTheme(dark) : setActiveTheme(light);
+    activeTheme === dark ? setActiveTheme(light) : setActiveTheme(dark);
   };
 
   return (

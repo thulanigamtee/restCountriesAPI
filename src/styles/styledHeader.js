@@ -8,7 +8,7 @@ const StyleHeader = styled.div`
   box-shadow: ${({ theme }) => theme.boxShadow};
   div {
     h1 {
-      font-size: 14px;
+      font-size: 18px;
     }
     button {
       color: ${({ theme }) => theme.text};

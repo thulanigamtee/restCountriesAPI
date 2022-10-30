@@ -33,18 +33,19 @@ const StyledCountries = styled.section`
     }
     div {
       padding: 15px 20px 40px 20px;
-      p {
-        &:first-of-type {
-          font-weight: bold;
-          margin-bottom: 15px;
-        }
-        &:not(:first-of-type) {
-          text-transform: capitalize;
+      a {
+        p {
           font-weight: 550;
-          margin-bottom: 5px;
-          span {
-            font-weight: normal;
-          }
+          margin-bottom: 15px;
+          font-weight: bold;
+        }
+      }
+      p {
+        text-transform: capitalize;
+        font-weight: 550;
+        margin-bottom: 5px;
+        span {
+          font-weight: normal;
         }
       }
     }

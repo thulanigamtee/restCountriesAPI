@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import StyledDetails from "../styles/styledDetails";
 import { BackButton } from "../styles/styledDetails";
 import { BsArrowLeft } from "react-icons/bs";
@@ -46,10 +47,13 @@ const Details = () => {
 
           return (
             <>
-              <BackButton>
-                <BsArrowLeft />
-                <p>back</p>
-              </BackButton>
+              <Link to="/">
+                <BackButton>
+                  <BsArrowLeft />
+                  <p>back</p>
+                </BackButton>
+              </Link>
+
               <StyledDetails key={name}>
                 <section>
                   <div>

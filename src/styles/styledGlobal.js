@@ -13,6 +13,9 @@ const StyleGlobal = createGlobalStyle`
     max-width: 1440px;
     margin: auto;
   }
+  a{
+    text-decoration: none;
+  }
   p,h1{
     color: ${({ theme }) => theme.text};
   }
