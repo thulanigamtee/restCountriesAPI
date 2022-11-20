@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { FaSearch } from "react-icons/fa";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import StyledSearchFilter from "../styles/styledSearchFilter";
-import CountriesContext from "./Context";
+import CountriesContext from "../Context";
 
 const SearchFilter = () => {
   const {
@@ -12,6 +12,8 @@ const SearchFilter = () => {
     handleRegionFilter,
     removeRegionFilter,
   } = useContext(CountriesContext);
+
+  const regions = ["africa", "america", "asia", "europe", "oceania"];
 
   const handleDropDown = () => {
     document.getElementById("regions").classList.toggle("active");
@@ -35,11 +37,13 @@ const SearchFilter = () => {
           <p>{activeRegion}</p>
           <MdKeyboardArrowDown />
           <div id="regions">
-            <span onClick={handleRegionFilter}>africa</span>
-            <span onClick={handleRegionFilter}>america</span>
-            <span onClick={handleRegionFilter}>asia</span>
-            <span onClick={handleRegionFilter}>europe</span>
-            <span onClick={handleRegionFilter}>oceania</span>
+            {regions.map((region) => {
+              return (
+                <span onClick={handleRegionFilter} key={region}>
+                  {region}
+                </span>
+              );
+            })}
             <span onClick={removeRegionFilter}>all</span>
           </div>
         </button>

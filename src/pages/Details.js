@@ -7,8 +7,9 @@ import { BsArrowLeft } from "react-icons/bs";
 
 const Details = () => {
   const { name } = useParams();
-  //const url = `https://restcountries.com/v3.1/name/${name}`;
+  //const { alpha3Code } = useParams();
   const url = `https://restcountries.com/v2/name/${name}?fullText=true`;
+  //const url = `https://restcountries.com/v2/alpha/${alpha3Code}`;
   const [country, setCountry] = useState([]);
   useEffect(() => {
     fetch(url)
@@ -21,6 +22,7 @@ const Details = () => {
         console.log(err.message);
       });
   }, [url]);
+
   return (
     <>
       {country.map(
@@ -44,7 +46,6 @@ const Details = () => {
             }
             return lang.join(", ");
           };
-
           return (
             <>
               <Link to="/">
@@ -53,11 +54,10 @@ const Details = () => {
                   <p>back</p>
                 </BackButton>
               </Link>
-
               <StyledDetails key={name}>
                 <section>
                   <div>
-                    <img src={flags.png} alt={name} />
+                    <img src={flags.svg} alt={name} />
                   </div>
                 </section>
                 <section>
@@ -104,11 +104,11 @@ const Details = () => {
                   </div>
                   <div>
                     <p>
-                      <span>border Countries: </span>
+                      <span>border countries: </span>
                       {borders ? (
                         <p>
                           {borders.map((border) => {
-                            return <p>{border}</p>;
+                            return <p key={border}>{border}</p>;
                           })}
                         </p>
                       ) : (
@@ -125,5 +125,4 @@ const Details = () => {
     </>
   );
 };
-
 export default Details;
