@@ -6,6 +6,7 @@ export const CountriesProvider = ({ children }) => {
   //const url = "https://restcountries.com/v3.1/all";
   const url = "https://restcountries.com/v2/all";
   const [countries, setCountries] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [filtered, setFiltered] = useState([]);
   const [region, setRegion] = useState([]);
   const [activeRegion, setActiveRegion] = useState("Filter by Region");
@@ -19,6 +20,7 @@ export const CountriesProvider = ({ children }) => {
       .then((response) => response.json())
       .then((data) => {
         setCountries(data);
+        setIsLoading(false);
         console.log(data);
       })
       .catch((err) => {
@@ -71,6 +73,7 @@ export const CountriesProvider = ({ children }) => {
         data,
         index,
         activeRegion,
+        isLoading,
         handleCountrySearch,
         handleRegionFilter,
         removeRegionFilter,

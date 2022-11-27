@@ -59,6 +59,12 @@ const StyledSearchFilter = styled.section`
           ${FlexBox({ direction: "column", justify: "space-between" })};
         }
         span {
+          width: 100%;
+          text-align: left;
+          &:hover {
+            background: ${({ theme }) => theme.text};
+            color: ${({ theme }) => theme.elements};
+          }
           &:first-of-type {
             padding-top: 10px;
           }

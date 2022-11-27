@@ -46,6 +46,7 @@ const Details = () => {
             }
             return lang.join(", ");
           };
+
           return (
             <>
               <Link to="/">
