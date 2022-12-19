@@ -14,7 +14,8 @@ export const CountriesProvider = ({ children }) => {
   const [name, setName] = useState("");
   const [index, setIndex] = useState(0);
 
-  const data = [countries, search, filtered];
+  const countriesData = [countries, search, filtered];
+
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
@@ -38,6 +39,8 @@ export const CountriesProvider = ({ children }) => {
 
   const handleCountrySearch = (e) => {
     setName(e.target.value);
+    setActiveRegion("Filter by Region");
+    setIndex(1);
   };
 
   useEffect(() => {
@@ -51,6 +54,7 @@ export const CountriesProvider = ({ children }) => {
   const handleRegionFilter = (e) => {
     setRegion(e.target.innerText);
     setActiveRegion(e.target.innerText);
+    setIndex(2);
   };
 
   const removeRegionFilter = () => {
@@ -58,19 +62,10 @@ export const CountriesProvider = ({ children }) => {
     setIndex(0);
   };
 
-  useEffect(() => {
-    if (name.length > 0) {
-      setIndex(1);
-    }
-    if (activeRegion !== "Filter by Region") {
-      setIndex(2);
-    }
-  }, [name, region]);
-
   return (
     <CountriesContext.Provider
       value={{
-        data,
+        countriesData,
         index,
         activeRegion,
         isLoading,
