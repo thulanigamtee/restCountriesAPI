@@ -114,11 +114,15 @@ const Country = ({
             </div>
             <CountryBorders>
               <h3>border countries: </h3>
-              <button>
+              <section>
                 {borderCountries.map(({ name }) => {
-                  return <span key={name.common}>{name.common}</span>;
+                  return (
+                    <button type="button" key={name.common}>
+                      {name.common}
+                    </button>
+                  );
                 })}
-              </button>
+              </section>
             </CountryBorders>
           </CountryDetailedInfo>
         </div>
