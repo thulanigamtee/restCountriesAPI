@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router";
 import Country from "../../components/country/Country";
 
@@ -6,11 +6,15 @@ const Details = () => {
   const { name } = useParams();
   const url = `https://restcountries.com/v3.1/name/${name}?fullText=true`;
   const [country, setCountry] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
-      .then((data) => setCountry(data))
+      .then((data) => {
+        setCountry(data);
+        setIsLoading(false);
+      })
       .catch(console.error);
   }, [country]);
 
@@ -42,6 +46,7 @@ const Details = () => {
               currencies={currencies}
               languages={languages}
               borders={borders}
+              isLoading={isLoading}
             />
           );
         }

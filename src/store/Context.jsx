@@ -3,7 +3,6 @@ import { createContext, useState, useEffect } from "react";
 export const CountriesContext = createContext();
 
 const CountriesProvider = ({ children }) => {
-  // const url = "https://restcountries.com/v2/all";
   const url = "https://restcountries.com/v3.1/all";
   const [countries, setCountries] = useState([]);
   const [activeRegion, setActiveRegion] = useState("Filter by Region");
@@ -12,6 +11,7 @@ const CountriesProvider = ({ children }) => {
   const [search, setSearch] = useState([]);
   const [name, setName] = useState("");
   const [dataIndex, setDataIndex] = useState(0);
+  const [isLoading, setIsloading] = useState(true);
 
   const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
@@ -22,7 +22,10 @@ const CountriesProvider = ({ children }) => {
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
-      .then((data) => setCountries(data))
+      .then((data) => {
+        setCountries(data);
+        setIsloading(false);
+      })
       .catch(console.error);
   }, []);
 
@@ -73,6 +76,7 @@ const CountriesProvider = ({ children }) => {
         handleCountrySearch,
         countriesData,
         dataIndex,
+        isLoading,
       }}
     >
       {children}

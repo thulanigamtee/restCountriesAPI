@@ -1,9 +1,9 @@
 import React from "react";
-import StyledLoader from "../styles/styledLoader";
+import LoaderStyle from "./LoaderStyle";
 
 const Loader = () => {
   return (
-    <StyledLoader>
+    <LoaderStyle>
       <span></span>
       <span></span>
       <span></span>
@@ -16,7 +16,7 @@ const Loader = () => {
       <span></span>
       <span></span>
       <span></span>
-    </StyledLoader>
+    </LoaderStyle>
   );
 };
 

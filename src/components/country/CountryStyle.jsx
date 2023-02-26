@@ -12,34 +12,34 @@ export const BackButton = styled.button`
   box-shadow: ${({ theme }) => theme.boxShadow};
   align-items: center;
   text-transform: capitalize;
-  margin: 35px 0 50px 0;
-  padding: 10px 20px;
-  gap: 0 10px;
+  margin: 2.1875rem 0 3.125rem 0;
+  padding: 0.625rem 1.25rem;
+  gap: 0 0.625rem;
 `;
 
 export const CountryInfo = styled.div`
-  @media (min-width: 768px) {
-    ${FlexBox({ direction: "row", justify: "space-between" })};
-    gap: 0 10px;
+  @media (min-width: 48rem) {
+    ${FlexBox({ direction: "row", justify: "flex-start" })};
+    gap: 0 10%;
     align-items: start;
   }
   div {
     img {
-      height: clamp(100px, 100%, 240px);
-      width: clamp(200px, 90vw, 320px);
-      @media (min-width: 1024px) {
-        width: clamp(320px, 35vw, 500px);
-        max-height: 350px;
+      height: clamp(6.25rem, 100%, 15rem);
+      width: clamp(12.5rem, 90vw, 20rem);
+      @media (min-width: 64rem) {
+        width: clamp(20rem, 35vw, 31.25rem);
+        max-height: 21.875rem;
       }
     }
     h1 {
-      font-size: 22px;
-      margin: 40px 0 25px 0;
-      @media (min-width: 768px) {
+      font-size: 1.375rem;
+      margin: 2.5rem 0 1.5625rem 0;
+      @media (min-width: 48rem) {
         margin: 0;
       }
-      @media (min-width: 1024px) {
-        margin: 40px 0 25px 0;
+      @media (min-width: 64rem) {
+        margin: 2.5rem 0 1.5625rem 0;
       }
     }
   }
@@ -48,24 +48,25 @@ export const CountryInfo = styled.div`
 export const CountryDetailedInfo = styled.div`
   div {
     ${FlexBox({ direction: "column", justify: "start" })};
-    gap: 40px 0;
-    @media (min-width: 900px) {
-      ${FlexBox({ direction: "row", justify: "space-between" })};
+    gap: 2.5rem 0;
+    @media (min-width: 56.25rem) {
+      ${FlexBox({ direction: "row", justify: "start" })};
+      gap: 0 10%;
     }
     section {
       ul {
         ${FlexBox({ direction: "column", justify: "start" })};
-        gap: 10px 0;
+        gap: 0.625rem 0;
         li {
           ${FlexBox({ direction: "row", justify: "start" })};
           color: ${({ theme }) => theme.text};
-          gap: 0 5px;
+          gap: 0 0.3125rem;
           text-transform: capitalize;
           font-weight: 600;
           white-space: nowrap;
           span {
             font-weight: normal;
-            max-width: 300px;
+            max-width: 18.75rem;
             white-space: normal;
           }
         }
@@ -77,14 +78,14 @@ export const CountryDetailedInfo = styled.div`
 export const CountryBorders = styled.div`
   ${FlexBox({ direction: "column", justify: "start" })};
   align-items: start;
-  margin: 40px 0;
-  gap: 20px;
-  @media (min-width: 1024px) {
+  margin: 2.5rem 0;
+  gap: 1.25rem;
+  @media (min-width: 64rem) {
     align-items: start;
   }
   h3 {
     color: ${({ theme }) => theme.text};
-    font-size: 17px;
+    font-size: 1.0625rem;
     text-transform: capitalize;
     font-weight: 600;
     white-space: nowrap;
@@ -92,18 +93,18 @@ export const CountryBorders = styled.div`
   section {
     ${FlexBox({ direction: "row", justify: "start" })};
     flex-wrap: wrap;
-    gap: 10px;
-    margin-top: -20px;
-    max-width: 520px;
-    @media (min-width: 900px) {
+    gap: 0.625rem;
+    margin-top: -1.25rem;
+    max-width: 32.5rem;
+    @media (min-width: 56.25rem) {
       margin-top: 0;
     }
     button {
       background: ${({ theme }) => theme.elements};
       color: ${({ theme }) => theme.text};
       box-shadow: ${({ theme }) => theme.boxShadow};
-      padding: 10px 20px;
-      border-radius: 3px;
+      padding: 0.625rem 1.25rem;
+      border-radius: 0.1875rem;
     }
   }
 `;

@@ -9,13 +9,13 @@ const Countries = () => {
     <CountriesStyle>
       {countriesData[dataIndex].map(
         ({ name, capital, population, region, flags }) => {
-          const returnCapitals = () => {
-            let cap = [];
-            for (let i = 0; i < capital.length; i++) {
-              cap[i] = capital[i];
-            }
-            return cap.join(", ");
-          };
+          // const returnCapitals = () => {
+          //   let cap = [];
+          //   for (let i = 0; i < capital.length; i++) {
+          //     cap[i] = capital[i];
+          //   }
+          //   return cap.join(", ");
+          // };
           return (
             <div key={name.common}>
               <img src={flags.png} alt={name.common} />

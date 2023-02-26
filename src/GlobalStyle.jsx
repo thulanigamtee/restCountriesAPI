@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Nunito Sans', sans-serif;
     background: ${({ theme }) => theme.background};
-    max-width: 1440px;
+    max-width: 90rem;
     margin: auto;
   }
   ul{
@@ -23,12 +23,13 @@ const GlobalStyle = createGlobalStyle`
   }
   p,h1,h2{
     color: ${({ theme }) => theme.text};
+    white-space:nowrap;
   }
   h1{
-    font-size:14px;
+    font-size:1.25rem;
   }
   h2{
-    font-size:16px;
+    font-size:1.125rem;
   }
   button, input{
     border: none;
