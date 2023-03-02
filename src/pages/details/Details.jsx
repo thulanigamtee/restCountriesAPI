@@ -6,7 +6,6 @@ const Details = () => {
   const { name } = useParams();
   const url = `https://restcountries.com/v3.1/name/${name}?fullText=true`;
   const [country, setCountry] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch(url)
@@ -46,7 +45,6 @@ const Details = () => {
               currencies={currencies}
               languages={languages}
               borders={borders}
-              isLoading={isLoading}
             />
           );
         }

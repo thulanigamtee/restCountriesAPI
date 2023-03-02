@@ -7,7 +7,6 @@ import CountryStyle, {
 } from "./CountryStyle";
 import { BsArrowLeft } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import Loader from "../loader/Loader";
 
 const Country = ({
   flags,
@@ -20,7 +19,6 @@ const Country = ({
   currencies,
   languages,
   borders,
-  isLoading,
 }) => {
   const [borderCountries, setBorderCountries] = useState([]);
   const borderCodes = [];
@@ -70,162 +68,81 @@ const Country = ({
   };
 
   return (
-    <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <CountryStyle>
-          <Link to="/">
-            <BackButton>
-              <BsArrowLeft />
-              <span>back</span>
-            </BackButton>
-          </Link>
-          <CountryInfo>
+    <CountryStyle>
+      <Link to="/">
+        <BackButton>
+          <BsArrowLeft />
+          <span>back</span>
+        </BackButton>
+      </Link>
+      <CountryInfo>
+        <div>
+          <img src={flags.png} alt={`${name.common} flag`} />
+        </div>
+        <div>
+          <div>
+            <h1>{name.common}</h1>
+          </div>
+          <CountryDetailedInfo>
             <div>
-              <img src={flags.png} alt={`${name.common} flag`} />
+              <section>
+                <ul>
+                  <li>
+                    native name: <span>{returnNativeName()}</span>
+                  </li>
+                  <li>
+                    population: <span>{population.toLocaleString()}</span>
+                  </li>
+                  <li>
+                    region: <span>{region}</span>
+                  </li>
+                  <li>
+                    sub region: <span>{subregion}</span>
+                  </li>
+                  <li>
+                    capital:
+                    <span>{returnCapital()}</span>
+                  </li>
+                </ul>
+              </section>
+              <section>
+                <ul>
+                  <li>
+                    top level domain: <span>{tld}</span>
+                  </li>
+                  <li>
+                    currencies: <span>{currency[0].name}</span>
+                  </li>
+                  <li>
+                    languages: <span>{returnLanguages()}</span>
+                  </li>
+                </ul>
+              </section>
             </div>
-            <div>
-              <div>
-                <h1>{name.common}</h1>
-              </div>
-              <CountryDetailedInfo>
-                <div>
-                  <section>
-                    <ul>
-                      <li>
-                        native name: <span>{returnNativeName()}</span>
-                      </li>
-                      <li>
-                        population: <span>{population.toLocaleString()}</span>
-                      </li>
-                      <li>
-                        region: <span>{region}</span>
-                      </li>
-                      <li>
-                        sub region: <span>{subregion}</span>
-                      </li>
-                      <li>
-                        capital:
-                        <span>{returnCapital()}</span>
-                      </li>
-                    </ul>
-                  </section>
-                  <section>
-                    <ul>
-                      <li>
-                        top level domain: <span>{tld}</span>
-                      </li>
-                      <li>
-                        currencies: <span>{currency[0].name}</span>
-                      </li>
-                      <li>
-                        languages: <span>{returnLanguages()}</span>
-                      </li>
-                    </ul>
-                  </section>
-                </div>
-                <CountryBorders>
-                  <h3>border countries: </h3>
-                  {borders ? (
-                    <section>
-                      {borderCountries.map(({ name }) => {
-                        return (
-                          <Link to={`/details/${name.common}`}>
-                            <button type="button" key={name.common}>
-                              {name.common}
-                            </button>
-                          </Link>
-                        );
-                      })}
-                    </section>
-                  ) : (
-                    <section>
-                      <p>No border countries</p>
-                    </section>
-                  )}
-                </CountryBorders>
-              </CountryDetailedInfo>
-            </div>
-          </CountryInfo>
-        </CountryStyle>
-      )}
-    </>
-    // <CountryStyle>
-    //   <Link to="/">
-    //     <BackButton>
-    //       <BsArrowLeft />
-    //       <span>back</span>
-    //     </BackButton>
-    //   </Link>
-    //   <CountryInfo>
-    //     <div>
-    //       <img src={flags.png} alt={`${name.common} flag`} />
-    //     </div>
-    //     <div>
-    //       <div>
-    //         <h1>{name.common}</h1>
-    //       </div>
-    //       <CountryDetailedInfo>
-    //         <div>
-    //           <section>
-    //             <ul>
-    //               <li>
-    //                 native name: <span>{returnNativeName()}</span>
-    //               </li>
-    //               <li>
-    //                 population: <span>{population.toLocaleString()}</span>
-    //               </li>
-    //               <li>
-    //                 region: <span>{region}</span>
-    //               </li>
-    //               <li>
-    //                 sub region: <span>{subregion}</span>
-    //               </li>
-    //               <li>
-    //                 capital:
-    //                 <span>{returnCapital()}</span>
-    //               </li>
-    //             </ul>
-    //           </section>
-    //           <section>
-    //             <ul>
-    //               <li>
-    //                 top level domain: <span>{tld}</span>
-    //               </li>
-    //               <li>
-    //                 currencies: <span>{currency[0].name}</span>
-    //               </li>
-    //               <li>
-    //                 languages: <span>{returnLanguages()}</span>
-    //               </li>
-    //             </ul>
-    //           </section>
-    //         </div>
-    //         <CountryBorders>
-    //           <h3>border countries: </h3>
-    //           {borders ? (
-    //             <section>
-    //               {borderCountries.map(({ name }) => {
-    //                 return (
-    //                   <Link to={`/details/${name.common}`}>
-    //                     <button type="button" key={name.common}>
-    //                       {name.common}
-    //                     </button>
-    //                   </Link>
-    //                 );
-    //               })}
-    //             </section>
-    //           ) : (
-    //             <section>
-    //               <p>No border countries</p>
-    //             </section>
-    //           )}
-    //         </CountryBorders>
-    //       </CountryDetailedInfo>
-    //     </div>
-    //   </CountryInfo>
-    // </CountryStyle>
+            <CountryBorders>
+              <h3>border countries: </h3>
+              {borders ? (
+                <section>
+                  {borderCountries.map(({ name }) => {
+                    return (
+                      <Link to={`/details/${name.common}`}>
+                        <button type="button" key={name.common}>
+                          {name.common}
+                        </button>
+                      </Link>
+                    );
+                  })}
+                </section>
+              ) : (
+                <section>
+                  <p>No border countries</p>
+                </section>
+              )}
+            </CountryBorders>
+          </CountryDetailedInfo>
+        </div>
+      </CountryInfo>
+    </CountryStyle>
   );
 };
 
